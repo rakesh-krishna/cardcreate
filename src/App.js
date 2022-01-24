@@ -1,13 +1,25 @@
-import Dynamic from './dynamicCard';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css'
-import './card.css'
-function App() {
+import React from "react";
+import "./styles.css";
+
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+// PAGES
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import Reports from "./pages/Reports";
+
+export default function App() {
   return (
     <div className="App">
-      <Dynamic />
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/products" component={Products} />
+          <Route path="/reports" component={Reports} />
+        </Switch>
+      </Router>
     </div>
   );
 }
-
-export default App;

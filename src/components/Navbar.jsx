@@ -9,6 +9,7 @@ import { IconContext } from "react-icons";
 // ROUTING
 
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // DATA FILE
 import { SidebarData } from "./SlidebarData";
@@ -18,8 +19,15 @@ import "./Navbar.css";
 
 export default function Navbar() {
   const [sidebar, setSidebar] = useState(false);
+  const history = useHistory();
 
   const showSidebar = () => setSidebar(!sidebar);
+  function handleClick() {
+    history.push({
+        pathname: "/",
+       
+    });
+}
 
   return (
     <>
@@ -29,7 +37,11 @@ export default function Navbar() {
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
+          {/* <button type="button" onClick={()=>handleClick()}>
+                                    Go home
+                                </button> */}
         </div>
+        
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="navbar-toggle">
